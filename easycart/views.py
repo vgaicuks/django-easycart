@@ -74,17 +74,16 @@ class CartView(View):
 
     def post(self, request):
         # Extract parameters from the post data
-        params = {}
+        params = request.POST.copy().dict()
         for param in self.required_params:
-            try:
-                params[param] = request.POST[param]
-            except KeyError:
+            if param not in params:
                 return JsonResponse({
                     'error': 'MissingRequestParam',
                     'param': param,
                 })
         for param, fallback in self.optional_params.items():
-            params[param] = request.POST.get(param, fallback)
+            if param not in params:
+                params[param] = fallback
         # Perform an action on the cart using these parameters
         cart = Cart(request)
         action = getattr(cart, self.action)

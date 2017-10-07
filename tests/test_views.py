@@ -93,6 +93,32 @@ class TestViews(TestCase):
             {'error': 'NonConvertibleItemQuantity', 'quantity': 'xxx'}
         )
 
+    def test_add_item_with_one_arbitrary_parameter(self):
+        self.check_response(
+            'cart-add',
+            {'pk': 1, 'quantity': 5, 'foo': 'bar'},
+            {'items': {'1': {'foo': 'bar', 'price': '3.00',
+                             'quantity': 15, 'total': '45.00'},
+                       '2': {'price': '5.00', 'quantity': 12, 'total': '60.00'},
+                       '3': {'price': '1.50', 'quantity': 6, 'total': '9.00'},
+                       '4': {'price': '2.00', 'quantity': 1, 'total': '2.00'}},
+             'itemCount': 4,
+             'totalPrice': '116.00'}
+        )
+
+    def test_add_item_with_multiple_arbitrary_parameters(self):
+        self.check_response(
+            'cart-add',
+            {'pk': 1, 'quantity': 5, 'foo': 'bar', 'baz': 'nox'},
+            {'items': {'1': {'foo': 'bar', 'baz': 'nox', 'price': '3.00',
+                             'quantity': 15, 'total': '45.00'},
+                       '2': {'price': '5.00', 'quantity': 12, 'total': '60.00'},
+                       '3': {'price': '1.50', 'quantity': 6, 'total': '9.00'},
+                       '4': {'price': '2.00', 'quantity': 1, 'total': '2.00'}},
+             'itemCount': 4,
+             'totalPrice': '116.00'}
+        )
+
     def test_remove_item(self):
         self.check_response(
             'cart-remove',

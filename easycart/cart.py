@@ -219,6 +219,9 @@ class BaseCart(object):
         if pk in self.items:
             existing_item = self.items[pk]
             existing_item.quantity += _clean_quantity(quantity)
+            for key, value in kwargs.items():
+                setattr(existing_item, key, value)
+                existing_item._kwargs = kwargs
         else:
             queryset = self.get_queryset([pk])
             try:
@@ -359,6 +362,8 @@ class BaseCart(object):
                 'quantity': item.quantity,
                 'total': item.total,
             }
+            for key, value in item._kwargs.items():
+                items[pk][key] = value
         cart_repr = {
             'items': items,
             'itemCount': self.item_count,
