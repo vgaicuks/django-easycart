@@ -86,7 +86,7 @@ class CartView(View):
         for param, fallback in self.optional_params.items():
             params[param] = request.POST.get(param, fallback)
         # Perform an action on the cart using these parameters
-        cart = self.get_cart_class(request)
+        cart = self.get_cart_class()(request)
         action = getattr(cart, self.action)
         try:
             action(**params)
