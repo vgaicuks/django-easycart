@@ -86,7 +86,7 @@ class CartView(View):
         for param, fallback in self.optional_params.items():
             params[param] = request.POST.get(param, fallback)
         # Perform an action on the cart using these parameters
-        cart = Cart(request)
+        cart = self.get_cart_class(request)
         action = getattr(cart, self.action)
         try:
             action(**params)
@@ -94,6 +94,9 @@ class CartView(View):
             return JsonResponse(dict({'error': exc.__class__.__name__},
                                      **exc.kwargs))
         return cart.encode()
+
+    def get_cart_class(self):
+        return Cart
 
 
 class AddItem(CartView):
