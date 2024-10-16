@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-16 15:05+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#: easycart/cart.py:550
+#, python-brace-format
+msgid "item quantity is invalid ({quantity})"
+msgstr ""
+
+#: easycart/cart.py:555
+#, python-brace-format
+msgid "can't convert quantity to an integer ({quantity})"
+msgstr ""
+
+#: easycart/cart.py:560
+#, python-brace-format
+msgid "item quantity is negative ({quantity})"
+msgstr ""
+
+#: easycart/cart.py:565
+msgid "item quantity must not be zero"
+msgstr ""
+
+#: easycart/cart.py:570
+#, python-brace-format
+msgid "{quantity} exceeds the allowed maximum of {max_quantity}"
+msgstr ""
+
+#: easycart/cart.py:575
+#, python-brace-format
+msgid "database doesn't have an item with pk {pk}"
+msgstr ""
+
+#: easycart/cart.py:580
+#, python-brace-format
+msgid "cart doesn't contain an item with pk {pk}"
+msgstr ""

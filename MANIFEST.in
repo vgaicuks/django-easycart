@@ -1,3 +1,5 @@
+recursive-include easycart/locale *
+
 include LICENSE
 include README.rst
 include VERSION

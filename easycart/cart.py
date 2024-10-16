@@ -1,6 +1,7 @@
 """Core classes to represent the user cart and items in it."""
 from django.conf import settings
 from django.http import JsonResponse
+from django.utils.translation import ugettext_lazy as _
 
 __all__ = [
     'BaseCart',
@@ -546,34 +547,34 @@ class CartException(Exception):
 
 class InvalidItemQuantity(CartException):
     """Base class for exceptions related to invalid item quantity."""
-    msg_template = "item quantity is invalid ({quantity})"
+    msg_template = _("item quantity is invalid ({quantity})")
 
 
 class NonConvertibleItemQuantity(InvalidItemQuantity):
     """Provided item quantity can't be converted to an integer."""
-    msg_template = "can't convert quantity to an integer ({quantity})"
+    msg_template = _("can't convert quantity to an integer ({quantity})")
 
 
 class NegativeItemQuantity(InvalidItemQuantity):
     """Provided item quantity is negative."""
-    msg_template = 'item quantity is negative ({quantity})'
+    msg_template = _('item quantity is negative ({quantity})')
 
 
 class ZeroItemQuantity(InvalidItemQuantity):
     """Provided item quantity is zero."""
-    msg_template = 'item quantity must not be zero'
+    msg_template = _('item quantity must not be zero')
 
 
 class TooLargeItemQuantity(InvalidItemQuantity):
     """Provided item quantity exceeds allowed limit."""
-    msg_template = '{quantity} exceeds the allowed maximum of {max_quantity}'
+    msg_template = _('{quantity} exceeds the allowed maximum of {max_quantity}')
 
 
 class ItemNotInDatabase(CartException):
     """Database doesn't contain an item with the given primary key."""
-    msg_template = "database doesn't have an item with pk {pk}"
+    msg_template = _("database doesn't have an item with pk {pk}")
 
 
 class ItemNotInCart(CartException):
     """Item with the given pk is not in the cart."""
-    msg_template = "cart doesn't contain an item with pk {pk}"
+    msg_template = _("cart doesn't contain an item with pk {pk}")
